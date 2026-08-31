@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulse — Feed</title>
+  <meta name="description" content="Your Pulse social media feed. See posts from people you follow." />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div id="toast-container"></div>
+
+  <div class="app-shell">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <a href="/feed.html" class="navbar-brand">
+        <div class="brand-icon">⚡</div>
+        <span class="gradient-text">Pulse</span>
+      </a>
+
+      <div class="navbar-search">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search people…" autocomplete="off" />
+        <div class="search-results" id="search-results"></div>
+      </div>
+
+      <div class="navbar-actions">
+        <button class="nav-user-btn" id="nav-user-btn" onclick="goToMyProfile()">
+          <div class="avatar" id="nav-avatar">?</div>
+          <span class="nav-username" id="nav-username">Loading…</span>
+        </button>
+        <button class="btn btn-ghost btn-sm" onclick="logout()" title="Logout">🚪</button>
+      </div>
+    </nav>
+
+    <!-- Feed Layout -->
+    <div class="feed-layout">
+
+      <!-- Left Sidebar -->
+      <aside class="sidebar-left">
+        <div class="nav-menu glass">
+          <button class="nav-item active" id="nav-feed" onclick="setTab('feed')">
+            <span class="nav-icon">🏠</span> Home
+          </button>
+          <button class="nav-item" id="nav-explore" onclick="setTab('explore')">
+            <span class="nav-icon">🔭</span> Explore
+          </button>
+          <button class="nav-item" id="nav-profile" onclick="goToMyProfile()">
+            <span class="nav-icon">👤</span> Profile
+          </button>
+        </div>
+      </aside>
+
+      <!-- Center Feed -->
+      <main class="feed-center">
+        <!-- Post Creator -->
+        <div class="post-creator glass">
+          <div class="post-creator-inner">
+            <div class="avatar" id="creator-avatar">?</div>
+            <textarea id="post-content" placeholder="What's on your mind?" maxlength="500"
+                      oninput="updateCharCount(this)"></textarea>
+          </div>
+          <div class="post-creator-footer">
+            <span class="char-count" id="char-count">0 / 500</span>
+            <button class="btn btn-primary btn-sm" onclick="createPost()" id="post-btn">
+              ⚡ Post
+            </button>
+          </div>
+        </div>
+
+        <!-- Feed Tabs -->
+        <div class="feed-tabs">
+          <button class="feed-tab active" id="tab-feed" onclick="setTab('feed')">✨ Following</button>
+          <button class="feed-tab" id="tab-explore" onclick="setTab('explore')">🔭 Explore</button>
+        </div>
+
+        <!-- Posts container -->
+        <div id="posts-container">
+          <div class="spinner"></div>
+        </div>
+      </main>
+
+      <!-- Right Sidebar -->
+      <aside class="sidebar-right">
+        <div class="sidebar-card glass">
+          <h3>👥 Who to Follow</h3>
+          <div id="suggested-users">
+            <div class="spinner" style="margin:20px auto;width:24px;height:24px;border-width:2px;"></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/feed.js"></script>
+</body>
+</html>

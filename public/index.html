@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulse — Social Media</title>
+  <meta name="description" content="Pulse is a modern mini social media platform. Connect, post, and follow people you care about." />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div id="toast-container"></div>
+
+  <div class="auth-page">
+    <div class="auth-card glass">
+
+      <div class="auth-logo">
+        <div class="logo-icon">⚡</div>
+        <h1 class="gradient-text">Pulse</h1>
+        <p>Connect with the world</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Sign In</button>
+        <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Sign Up</button>
+      </div>
+
+      <!-- Login Form -->
+      <form class="auth-form" id="login-form" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="login-username">Username</label>
+          <input id="login-username" class="form-input" type="text"
+                 placeholder="your_username" autocomplete="username" required />
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input id="login-password" class="form-input" type="password"
+                 placeholder="••••••••" autocomplete="current-password" required />
+        </div>
+        <button type="submit" class="btn btn-primary" id="login-btn" style="width:100%;justify-content:center">
+          <span id="login-btn-text">Sign In</span>
+        </button>
+        <button type="button" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:8px;" onclick="demoLogin()">
+          ⚡ Quick Demo Login
+        </button>
+        <p class="auth-divider">Don't have an account? <a href="#" onclick="switchTab('register')" style="color:var(--purple-light)">Sign up</a></p>
+      </form>
+
+      <!-- Register Form -->
+      <form class="auth-form" id="register-form" style="display:none" onsubmit="handleRegister(event)">
+        <div class="form-group">
+          <label for="reg-displayname">Display Name</label>
+          <input id="reg-displayname" class="form-input" type="text"
+                 placeholder="Your Name" maxlength="40" required />
+        </div>
+        <div class="form-group">
+          <label for="reg-username">Username</label>
+          <input id="reg-username" class="form-input" type="text"
+                 placeholder="username (letters, numbers, _)" maxlength="20" required />
+        </div>
+        <div class="form-group">
+          <label for="reg-password">Password</label>
+          <input id="reg-password" class="form-input" type="password"
+                 placeholder="At least 6 characters" autocomplete="new-password" required />
+        </div>
+        <button type="submit" class="btn btn-primary" id="register-btn">
+          <span id="register-btn-text">Create Account</span>
+        </button>
+        <p class="auth-divider">Already have an account? <a href="#" onclick="switchTab('login')" style="color:var(--purple-light)">Sign in</a></p>
+      </form>
+
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

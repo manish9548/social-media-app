@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulse — Profile</title>
+  <meta name="description" content="User profile on Pulse social media." />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div id="toast-container"></div>
+
+  <div class="app-shell">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <a href="/feed.html" class="navbar-brand">
+        <div class="brand-icon">⚡</div>
+        <span class="gradient-text">Pulse</span>
+      </a>
+
+      <div class="navbar-search">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search people…" autocomplete="off" />
+        <div class="search-results" id="search-results"></div>
+      </div>
+
+      <div class="navbar-actions">
+        <button class="nav-user-btn" id="nav-user-btn" onclick="goToMyProfile()">
+          <div class="avatar" id="nav-avatar">?</div>
+          <span class="nav-username" id="nav-username">Loading…</span>
+        </button>
+        <button class="btn btn-ghost btn-sm" onclick="logout()" title="Logout">🚪</button>
+      </div>
+    </nav>
+
+    <!-- Profile Layout -->
+    <div class="profile-layout">
+
+      <!-- Profile Header -->
+      <div class="profile-header" id="profile-header">
+        <div class="spinner" style="margin:60px auto;"></div>
+      </div>
+
+      <!-- Posts -->
+      <div class="profile-posts" id="profile-posts"></div>
+    </div>
+  </div>
+
+  <!-- Edit Profile Modal -->
+  <div class="modal-overlay" id="edit-modal">
+    <div class="modal">
+      <h2>✏️ Edit Profile</h2>
+      <div class="modal-form">
+        <div class="form-group">
+          <label for="edit-displayname">Display Name</label>
+          <input id="edit-displayname" class="form-input" type="text" maxlength="40" />
+        </div>
+        <div class="form-group">
+          <label for="edit-bio">Bio</label>
+          <textarea id="edit-bio" class="form-input" placeholder="Tell the world about yourself…" maxlength="200"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Avatar Color</label>
+          <div class="color-picker-row" id="color-picker"></div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeEditModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+</html>
